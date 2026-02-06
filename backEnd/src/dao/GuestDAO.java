@@ -5,6 +5,7 @@ import model.Guest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class GuestDAO {
 
@@ -34,5 +35,38 @@ public class GuestDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    // ✅ NEW METHOD (INSIDE CLASS)
+    public Guest getGuestByReservationNumber(int resNo) {
+
+        String sql = "SELECT * FROM guest WHERE reservation_number = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, resNo);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                return new Guest(
+                    rs.getString("name"),
+                    rs.getString("address"),
+                    rs.getString("contact_number"),
+                    rs.getInt("reservation_number"),
+                    rs.getString("room_type"),
+                    rs.getDate("check_in"),
+                    rs.getDate("check_out")
+                );
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error fetching reservation:");
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
