@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation - Ocean View Resort</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        Ocean View Resort
+    </header>
+
+    <main>
+        <div class="reservation-card">
+            <h2 class="reservation-header">Add New Reservation</h2>
+            <form id="reservationForm">
+                <label for="name">Guest Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" required>
+
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" required>
+
+                <label for="reservationNumber">Reservation Number:</label>
+                <input type="number" id="reservationNumber" required>
+
+                <label for="roomType">Room Type:</label>
+                <select id="roomType" required>
+                    <option value="">Select room</option>
+                    <option value="Single">Single</option>
+                    <option value="Double">Double</option>
+                    <option value="Suite">Suite</option>
+                </select>
+
+                <label for="checkIn">Check-in Date:</label>
+                <input type="date" id="checkIn" required>
+
+                <label for="checkOut">Check-out Date:</label>
+                <input type="date" id="checkOut" required>
+
+                <button type="submit">Add Reservation</button>
+            </form>
+            <div id="reservationMessage"></div>
+        </div>
+    </main>
+
+    <script src="../js/reservation.js"></script>
+</body>
+</html>

@@ -4,11 +4,10 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
+    // Simple client-side check (replace with backend authentication later)
     if(username === "admin" && password === "1234") {
-        document.getElementById("message").innerText = "Login successful!";
-        // redirect to reservation page (to be created next)
-        window.location.href = "../html/reservation.html";
+        window.location.href = "reservation.html";
     } else {
-        document.getElementById("message").innerText = "Invalid credentials!";
+        document.getElementById("loginMessage").innerText = "Invalid username or password!";
     }
 });

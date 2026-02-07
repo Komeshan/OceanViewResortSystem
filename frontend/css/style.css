@@ -1,88 +1,111 @@
-/* Make body full screen and center everything */
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #00c6ff, #0072ff);
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Main container */
+main {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    padding: 40px 0;
 }
 
-/* Container for heading + form */
-.container {
-    text-align: center;
-}
-
-/* Heading styling */
-h1 {
-    color: white;
-    margin-bottom: 30px;
-}
-
-/* Card-like form container */
-form {
+/* Cards for login and reservation */
+.login-card, .reservation-card {
     background-color: white;
-    padding: 40px 30px;
-    border-radius: 15px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
-    width: 350px;
-    margin: auto;
-    text-align: left;
+    width: 400px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Inner form heading */
-form h2 {
+/* Card headers */
+.login-header, .reservation-header {
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #004080;
 }
 
-/* Labels and inputs */
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 label {
-    display: block;
-    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
     color: #333;
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
+input, select, button {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
 }
 
-/* Button styling */
+/* Input focus */
+input:focus, select:focus {
+    border-color: #004080;
+    outline: none;
+}
+
+/* Buttons */
 button {
-    background-color: #0072ff;
+    background-color: #004080;
     color: white;
-    padding: 12px;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 20px;
+    transition: background 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0066cc;
 }
 
-/* Error message */
-#message {
-    margin-top: 15px;
-    font-weight: bold;
-    color: red;
+/* Message div */
+#loginMessage, #reservationMessage, #message {
     text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 16px;
 }
 
-/* Responsive for small screens */
-@media (max-width: 400px) {
-    form {
+/* Responsive adjustments */
+@media screen and (max-width: 500px) {
+    .login-card, .reservation-card {
         width: 90%;
-        padding: 30px 20px;
+        padding: 20px;
+    }
+    header {
+        font-size: 22px;
     }
 }
