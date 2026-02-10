@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Management - Ocean View Resort</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        Ocean View Resort
+    </header>
+
+    <nav class="navbar">
+        <a href="login.html">Login</a>
+        <a href="reservation.html">Reservations</a>
+        <a href="staff.html">Staff</a>
+        <a href="roomRates.html">Room Rates</a>
+        <a href="help.html">Help</a>
+    </nav>
+    
+    <main>
+        <div class="reservation-card">
+            <h2 class="reservation-header">Staff Management</h2>
+            
+            <form id="staffForm">
+                <label for="staffName">Staff Name:</label>
+                <input type="text" id="staffName" required>
+
+                <label for="staffUsername">Username:</label>
+                <input type="text" id="staffUsername" required>
+
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" required>
+
+                <button type="submit">Add Staff</button>
+            </form>
+
+            <h3>Staff List</h3>
+            <ul id="staffList"></ul>
+
+            <div id="staffMessage"></div>
+            <button onclick="goBack()">Back</button>
+        </div>
+    </main>
+
+    <script src="../js/staff.js"></script>
+</body>
+</html>
