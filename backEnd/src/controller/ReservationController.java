@@ -25,10 +25,11 @@ public class ReservationController extends HttpServlet {
             Reservation res = new Reservation(resNumber, name, address, contact, roomType, checkIn, checkOut);
             ReservationDAO.addReservation(res);
 
-            response.sendRedirect("html/reservation.html?success=true");
+            response.sendRedirect("reservation.html?success=true");
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("html/reservation.html?error=true");
+            response.sendRedirect("reservation.html?error=true");
         }
     }
 }
+

@@ -1,25 +1,43 @@
-document.getElementById('reservationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// Add reservation
+document.getElementById('reservationForm').addEventListener('submit', function(e){
+    // let form submit normally to servlet
+    const messageDiv = document.getElementById('reservationMessage');
+    messageDiv.textContent = "Submitting...";
+    messageDiv.style.color = "black";
+});
 
-    const name = document.getElementById('name').value;
-    const address = document.getElementById('address').value;
-    const contact = document.getElementById('contact').value;
-    const roomType = document.getElementById('roomType').value;
-    const checkIn = document.getElementById('checkIn').value;
-    const checkOut = document.getElementById('checkOut').value;
+// View reservation
+document.getElementById('viewReservationBtn').addEventListener('click', function(){
+    const id = document.getElementById('viewResNumber').value;
+    const resultDiv = document.getElementById('viewReservationResult');
 
-    const messageDiv = document.getElementById('message');
-
-    // Basic validation
-    if (!name || !address || !contact || !roomType || !checkIn || !checkOut) {
-        messageDiv.textContent = "Please fill in all fields!";
-        messageDiv.style.color = "red";
+    if(!id){
+        resultDiv.textContent = "Enter reservation number!";
+        resultDiv.style.color = "red";
         return;
     }
 
-    messageDiv.textContent = "Reservation added successfully!";
-    messageDiv.style.color = "green";
-
-    // Reset form
-    this.reset();
+    fetch(`/OceanViewResort/viewReservation?id=${id}`)
+    .then(res => res.json())
+    .then(data => {
+        if(!data){
+            resultDiv.textContent = "Reservation not found!";
+            resultDiv.style.color = "red";
+        } else {
+            resultDiv.innerHTML = `
+                <p><strong>Reservation Number:</strong> ${data.reservationNumber}</p>
+                <p><strong>Name:</strong> ${data.guestName}</p>
+                <p><strong>Address:</strong> ${data.address}</p>
+                <p><strong>Contact:</strong> ${data.contact}</p>
+                <p><strong>Room Type:</strong> ${data.roomType}</p>
+                <p><strong>Check-in:</strong> ${data.checkIn}</p>
+                <p><strong>Check-out:</strong> ${data.checkOut}</p>
+            `;
+        }
+    })
+    .catch(err => {
+        resultDiv.textContent = "Error fetching reservation!";
+        resultDiv.style.color = "red";
+        console.error(err);
+    });
 });

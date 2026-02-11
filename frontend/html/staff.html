@@ -6,43 +6,43 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        Ocean View Resort
-    </header>
+<header>
+    Ocean View Resort
+</header>
 
-    <nav class="navbar">
-        <a href="login.html">Login</a>
-        <a href="reservation.html">Reservations</a>
-        <a href="staff.html">Staff</a>
-        <a href="roomRates.html">Room Rates</a>
-        <a href="help.html">Help</a>
-    </nav>
-    
-    <main>
-        <div class="reservation-card">
-            <h2 class="reservation-header">Staff Management</h2>
-            
-            <form id="staffForm">
-                <label for="staffName">Staff Name:</label>
-                <input type="text" id="staffName" required>
+<nav class="navbar">
+    <a href="login.html">Login</a>
+    <a href="reservation.html">Reservations</a>
+    <a href="staff.html">Staff</a>
+    <a href="roomRates.html">Room Rates</a>
+    <a href="help.html">Help</a>
+</nav>
 
-                <label for="staffUsername">Username:</label>
-                <input type="text" id="staffUsername" required>
+<main>
+    <div class="reservation-card">
+        <h2 class="reservation-header">Staff Management</h2>
+        
+        <form id="staffForm" action="/OceanViewResort/staff" method="post">
+            <label for="staffName">Staff Name:</label>
+            <input type="text" id="staffName" name="staffName" required>
 
-                <label for="staffPassword">Password:</label>
-                <input type="password" id="staffPassword" required>
+            <label for="staffUsername">Username:</label>
+            <input type="text" id="staffUsername" name="staffUsername" required>
 
-                <button type="submit">Add Staff</button>
-            </form>
+            <label for="staffPassword">Password:</label>
+            <input type="password" id="staffPassword" name="staffPassword" required>
 
-            <h3>Staff List</h3>
-            <ul id="staffList"></ul>
+            <button type="submit">Add Staff</button>
+        </form>
 
-            <div id="staffMessage"></div>
-            <button onclick="goBack()">Back</button>
-        </div>
-    </main>
+        <h3>Staff List</h3>
+        <ul id="staffList"></ul>
 
-    <script src="../js/staff.js"></script>
+        <div id="staffMessage"></div>
+        <button onclick="goBack()">Back</button>
+    </div>
+</main>
+
+<script src="../js/staff.js"></script>
 </body>
 </html>

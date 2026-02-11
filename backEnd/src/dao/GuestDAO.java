@@ -1,11 +1,9 @@
 package dao;
 
-import model.Guest;
-import dao.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import model.Guest;
 
 public class GuestDAO {
     public static void addGuest(Guest g) throws SQLException {

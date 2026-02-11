@@ -1,13 +1,13 @@
 package dao;
 
-import model.Reservation;
-import dao.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.Reservation;
 
 public class ReservationDAO {
+
     public static void addReservation(Reservation r) throws SQLException {
         String sql = "INSERT INTO reservations (reservation_number, guest_name, address, contact, room_type, check_in, check_out) VALUES (?,?,?,?,?,?,?)";
 
@@ -23,6 +23,31 @@ public class ReservationDAO {
             ps.setString(7, r.getCheckOut());
 
             ps.executeUpdate();
+        }
+    }
+
+    public static Reservation getReservationByNumber(int resNumber) throws SQLException {
+        String sql = "SELECT * FROM reservations WHERE reservation_number = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, resNumber);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Reservation(
+                        rs.getInt("reservation_number"),
+                        rs.getString("guest_name"),
+                        rs.getString("address"),
+                        rs.getString("contact"),
+                        rs.getString("room_type"),
+                        rs.getString("check_in"),
+                        rs.getString("check_out")
+                );
+            } else {
+                return null;
+            }
         }
     }
 }

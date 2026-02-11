@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice - Ocean View Resort</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .invoice-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.2);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+        h2 { text-align: center; color: #004080; margin-bottom: 25px; }
+        .invoice-item { margin: 10px 0; }
+        .total { font-weight: bold; margin-top: 20px; }
+        button { background: #004080; color: white; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #0066cc; }
+    </style>
+</head>
+<body>
+    <header>Ocean View Resort</header>
+    <main>
+        <div class="invoice-card">
+            <h2>Reservation Invoice</h2>
+
+            <div id="invoiceDetails"></div>
+
+            <button onclick="window.print()">Print Invoice</button>
+            <button onclick="goBack()">Back</button>
+        </div>
+    </main>
+
+    <script src="../js/invoice.js"></script>
+</body>
+</html>
